@@ -12,26 +12,30 @@
 
 module.exports = async () => {
 
-  await strapi.plugins['users-permissions'].services.user.add({
-    id: 1,
-    username: 'John Doe',
-    email: 'john@doe.fr',
-    provider: 'local',
-    password: '$2a$10$jA6p3IBpqc6hSco8AYNDhORpAdP6yd/bZUmAZNhLFJjs/O//LEOVq',
-    resetPasswordToken: null,
-    confirmed: 1,
-    blocked: 0,
-    role: 1,
-    veterinary: 1,
-    created_by: 1,
-    updated_by: 1
-  })
+  if (await strapi.plugins['users-permissions'].services.user.count() === 0) {
+    await strapi.plugins['users-permissions'].services.user.add({
+      id: 1,
+      username: 'John Doe',
+      email: 'john@doe.fr',
+      provider: 'local',
+      password: '$2a$10$jA6p3IBpqc6hSco8AYNDhORpAdP6yd/bZUmAZNhLFJjs/O//LEOVq',
+      resetPasswordToken: null,
+      confirmed: 1,
+      blocked: 0,
+      role: 1,
+      veterinary: 1,
+      created_by: 1,
+      updated_by: 1
+    })
+  }
 
-  await strapi.services.veterinary.create({
-    id: 1,
-    ordinal: 10775,
-    user: 1,
-    created_by: 1,
-    updated_by: 1
-  })
+  if (await strapi.services.veterinary.count === 0) {
+    await strapi.services.veterinary.create({
+      id: 1,
+      ordinal: 10775,
+      user: 1,
+      created_by: 1,
+      updated_by: 1
+    })
+  }
 };

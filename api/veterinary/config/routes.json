@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/veterinaries",
+      "handler": "veterinary.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/veterinaries/count",
+      "handler": "veterinary.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/veterinaries/:id",
+      "handler": "veterinary.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/veterinaries",
+      "handler": "veterinary.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/veterinaries/:id",
+      "handler": "veterinary.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/veterinaries/:id",
+      "handler": "veterinary.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
